@@ -34,7 +34,13 @@
 
 namespace p2t {
 
-SweepContext::SweepContext(std::vector<Point*> polyline)
+SweepContext::SweepContext(std::vector<Point*> polyline) :
+  front_(0),
+  head_(0),
+  tail_(0),
+  af_head_(0),
+  af_middle_(0),
+  af_tail_(0)
 {
   basin = Basin();
   edge_event = EdgeEvent();
