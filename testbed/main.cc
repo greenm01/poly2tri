@@ -185,11 +185,19 @@ int main(int argc, char* argv[])
   } else if (random_distribution) {
     max-=(1e-4);
     min+=(1e-4);
+    // Add random points
+    vector<p2t::Point*> random_points; 
+    
     for(int i = 0; i < num_points; i++) {
       double x = Random(Fun, min, max);
       double y = Random(Fun, min, max);
-      cdt->AddPoint(new Point(x, y));
+
+      p2t::Point* tmp_point = new Point(x, y);
+      cdt->AddPoint(tmp_point);
+      random_points.push_back(tmp_point);
     }
+    //Add the random points to polylines
+    polylines.push_back(random_points);
   }
   
   /*
