@@ -56,6 +56,9 @@ double Fun(double x);
 vector<Point*> CreateHeadHole();
 vector<Point*> CreateChestHole();
 
+/// Stalactite hole example
+vector<Point*> CreateStalactiteHole();
+
 float rotate_y = 0,
       rotate_z = 0;
 const float rotations_per_tick = .2;
@@ -182,6 +185,11 @@ int main(int argc, char* argv[])
     cdt->AddHole(chest_hole);
     polylines.push_back(head_hole);
     polylines.push_back(chest_hole);
+  } else if (s.find("stalactite.dat", 0) != string::npos) {
+    vector<Point*> stalactite_hole = CreateStalactiteHole();
+    num_points += stalactite_hole.size();
+    cdt->AddHole(stalactite_hole);
+    polylines.push_back(stalactite_hole);
   } else if (random_distribution) {
     max-=(1e-4);
     min+=(1e-4);
@@ -413,7 +421,18 @@ vector<Point*> CreateChestHole() {
 
 }
 
+vector<Point*> CreateStalactiteHole() {
+  vector<Point*> hole;
+  hole.push_back(new Point(980, 1636));
+  hole.push_back(new Point(950, 1600));
+  hole.push_back(new Point(650, 1230));
+  hole.push_back(new Point(625, 1247));
+  hole.push_back(new Point(600, 1250));
+  hole.push_back(new Point(591, 1350));
+  hole.push_back(new Point(550, 2050));
 
+  return hole;
+}
 
 double StringToDouble(const std::string& s)
 {
