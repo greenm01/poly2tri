@@ -304,8 +304,8 @@ bool Sweep::LargeHole_DontFill(Node* node) {
   return true;
 }
 
-bool Sweep::AngleIsNegative(const Point* origin, const Point* pa, const Point* pb) const {
-    const double angle = Angle(origin, pa, pb);
+bool Sweep::AngleIsNegative(Point* origin, Point* pa, Point* pb) {
+    const double angle = Angle(*origin, *pa, *pb);
     return angle < 0;
 }
 
